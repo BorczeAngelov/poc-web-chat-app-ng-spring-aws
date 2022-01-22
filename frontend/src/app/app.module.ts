@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { WebChatComponent } from './web-chat/web-chat.component';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
   declarations: [
     AppComponent,
     PingServerComponent,
-    MessageBoardComponent
+    MessageBoardComponent,
+    WebChatComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
