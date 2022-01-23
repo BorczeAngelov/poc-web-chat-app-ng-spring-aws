@@ -10,8 +10,8 @@ import dev.borczeangelov.poc.springboot.dto.User;
 @Controller
 public class WebChatController {
 
-    @MessageMapping("/hello")
-    @SendTo("/topic/hi")
+    @MessageMapping("/api/ws/send-message")
+    @SendTo("/api/ws/send-message-response")
     public Hello greeting(User user) throws Exception {
         return new Hello("Hi, " + user.getName() + "!");
     }

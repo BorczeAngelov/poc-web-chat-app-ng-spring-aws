@@ -24,12 +24,12 @@ export class WebChatService {
   }
 
   sendName(name: string) {
-    this.stompClient.send('/hello', {}, JSON.stringify({ 'name': name }));
+    this.stompClient.send('/api/ws/send-message', {}, JSON.stringify({ 'name': name }));
   }
 
   private onConnected(arg: IFrame) {
     console.log('onConnected: ' + arg);
-    this.stompClient.subscribe('/topic/hi', data => this.onMessageReceived(data));
+    this.stompClient.subscribe('/api/ws/send-message-response', data => this.onMessageReceived(data));
   }
 
   private onMessageReceived(data: IMessage) {
