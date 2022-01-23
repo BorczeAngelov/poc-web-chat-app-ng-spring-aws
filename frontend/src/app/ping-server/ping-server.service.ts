@@ -2,31 +2,19 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { HttpService } from '../http.service';
 import { PingServerResponse } from './pingServerResponse';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PingServerService {
-
-  serverUrl: string;
   pingResponeMessage$: Observable<PingServerResponse>;
-  isProduction: boolean;
 
-  constructor(private http: HttpClient) {
-    this.isProduction = environment.production;
-
-    if (this.isProduction) {
-      this.serverUrl = "//" + window.location.hostname;
-    }
-    else {
-      this.serverUrl = "http://localhost:8080";
-    }
-  }
+  constructor(private http: HttpClient, private httpService: HttpService) { }
 
 
   pingServer(): void {
-    this.pingResponeMessage$ = this.http.get<PingServerResponse>(this.serverUrl + '/api/pingServer');
+    this.pingResponeMessage$ = this.http.get<PingServerResponse>(this.httpService.serverUrl + '/api/pingServer');
   }
-
 }
