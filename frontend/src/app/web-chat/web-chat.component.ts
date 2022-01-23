@@ -6,9 +6,9 @@ import { WebChatService } from './web-chat.service';
   templateUrl: './web-chat.component.html',
   styleUrls: ['./web-chat.component.css']
 })
-export class WebChatComponent implements OnInit {
-  disabled = false;
-  name: string;
+export class WebChatComponent implements OnInit {  
+  userName: String = 'Guest';
+  message: String = null;
 
   constructor(public webChatService: WebChatService) { }
 
@@ -23,7 +23,7 @@ export class WebChatComponent implements OnInit {
     this.webChatService.disconnect();
   }
 
-  sendName() {    
-    this.webChatService.sendName(this.name);
+  sendMessage() {    
+    this.webChatService.sendMessage(this.message);
   }
 }

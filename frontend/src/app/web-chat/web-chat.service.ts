@@ -6,9 +6,8 @@ import { HttpService } from '../http.service';
   providedIn: 'root'
 })
 export class WebChatService {
-  private stompClient: CompatClient;
-  public greetings: string[] = [];
-
+  public stompClient: CompatClient;
+  public greetings: String[] = [];
 
   constructor(private httpService: HttpService) { }
 
@@ -20,9 +19,10 @@ export class WebChatService {
 
   disconnect() {
     this.stompClient.disconnect();
+    this.stompClient?.state
   }
 
-  sendName(name: string) {
+  sendMessage(name: String) {
     this.stompClient.send('/api/ws/send-message', {}, JSON.stringify({ 'name': name }));
   }
 
@@ -31,7 +31,7 @@ export class WebChatService {
   }
 
   private onMessageReceived(data: IMessage) {
-    var dynamicData = JSON.parse(data.body).greeting; //Use static types
-    this.greetings.push(dynamicData);
+    var newData = JSON.parse(data.body).greeting; //Use static types
+    this.greetings = [...this.greetings, newData];
   }
 }
