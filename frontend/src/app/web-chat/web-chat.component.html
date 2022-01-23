@@ -31,14 +31,14 @@
 
   <table>
     <td>
-      <mat-form-field style="width: 100px;">
+      <mat-form-field style="width: 150px;">
         <mat-label>User name</mat-label>
         <input matInput [(ngModel)]="userName" value={{userName}}>
       </mat-form-field>
     </td>
 
     <td>
-      <mat-form-field style="width: 500px;">
+      <mat-form-field style="width: 250px;">
         <mat-label>Message</mat-label>
         <input matInput [(ngModel)]="message" value={{message}}>
       </mat-form-field>
@@ -47,7 +47,7 @@
 
     <td>
       <button mat-raised-button color="primary" style="margin-left: 20px;" (click)="sendMessage()"
-        [disabled]="!userName || !message">
+        [disabled]="!userName || !message || webChatService.stompClient?.state !== 0">
         Send Message
       </button>
     </td>

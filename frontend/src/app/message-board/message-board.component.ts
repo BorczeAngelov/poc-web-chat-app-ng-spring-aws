@@ -9,7 +9,7 @@ import { MessageBoardService } from './message-board.service';
 })
 export class MessageBoardComponent implements OnInit {
 
-  userName: String = 'Guest';
+  userName: String = 'HTTP user';
   message: String = null;
 
   constructor(public messageBoardService: MessageBoardService) { }

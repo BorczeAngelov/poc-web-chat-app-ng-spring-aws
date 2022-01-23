@@ -8,12 +8,13 @@ import { WebChatService } from './web-chat.service';
   styleUrls: ['./web-chat.component.css']
 })
 export class WebChatComponent implements OnInit {
-  userName: String = 'Guest';
+  userName: String = 'WebSocket user';
   message: String = null;
 
   constructor(public webChatService: WebChatService) { }
 
   ngOnInit(): void {
+    this.connect();
   }
 
   connect() {
