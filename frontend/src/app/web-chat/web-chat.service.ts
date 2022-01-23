@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { CompatClient, IMessage, Stomp } from '@stomp/stompjs';
 import { HttpService } from '../http.service';
+import { Message } from '../message-board/Message';
+import { MessageBoard } from '../message-board/messageBoard';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WebChatService {
   public stompClient: CompatClient;
-  public greetings: String[] = [];
+  public messageBoard: MessageBoard;
 
   constructor(private httpService: HttpService) { }
 
@@ -22,8 +24,8 @@ export class WebChatService {
     this.stompClient?.state
   }
 
-  sendMessage(name: String) {
-    this.stompClient.send('/api/ws/send-message', {}, JSON.stringify({ 'name': name }));
+  sendMessage(newMessage: Message) {
+    this.stompClient.send('/api/ws/send-message', {}, JSON.stringify(newMessage));
   }
 
   private onConnected() {
@@ -31,7 +33,12 @@ export class WebChatService {
   }
 
   private onMessageReceived(data: IMessage) {
-    var newData = JSON.parse(data.body).greeting; //Use static types
-    this.greetings = [...this.greetings, newData];
+    var newMessageBoard: MessageBoard = JSON.parse(data.body);
+    this.messageBoard = newMessageBoard;
+
+    console.log(this.messageBoard);
+
+    // var newData = JSON.parse(data.body).greeting; //Use static types
+    // this.greetings = [...this.greetings, newData];
   }
 }

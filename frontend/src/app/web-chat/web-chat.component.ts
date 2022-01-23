@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Message } from '../message-board/Message';
 import { WebChatService } from './web-chat.service';
 
 @Component({
@@ -6,7 +7,7 @@ import { WebChatService } from './web-chat.service';
   templateUrl: './web-chat.component.html',
   styleUrls: ['./web-chat.component.css']
 })
-export class WebChatComponent implements OnInit {  
+export class WebChatComponent implements OnInit {
   userName: String = 'Guest';
   message: String = null;
 
@@ -17,13 +18,28 @@ export class WebChatComponent implements OnInit {
 
   connect() {
     this.webChatService.connect();
-  }  
+  }
 
   disconnect() {
     this.webChatService.disconnect();
   }
 
-  sendMessage() {    
-    this.webChatService.sendMessage(this.message);
+  sendMessage() {
+    if (this.message) {
+
+      var newMessage: Message = {
+        id: 0,
+        user: this.userName,
+        content: this.message,
+        timeStamp: null,
+      }
+
+      console.log(this.message);
+
+
+      this.webChatService.sendMessage(newMessage);
+      this.message = null;
+    }
+
   }
 }

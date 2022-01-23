@@ -1,7 +1,7 @@
 <h3>WebSocket (STOMP) Chat Component</h3>
 
 <div>
-  
+
   <mat-list ma>
     <div>
       <button (click)="connect()" mat-raised-button color="primary" style="margin-bottom: 10px;"
@@ -16,8 +16,12 @@
     </div>
 
     <cdk-virtual-scroll-viewport appendOnly itemSize="50px" style="height: 150px;border: 1px solid black;">
-      <div *cdkVirtualFor="let greeting of webChatService.greetings" class="example-item" style="height: 50px;">
-        {{greeting}}
+      <div *cdkVirtualFor="let item of webChatService.messageBoard?.messages" class="example-item" style="height: 50px;">
+
+        <label mat-line>{{item.user}}: {{item.content}}</label>
+        <div>
+          <label mat-line>Timestamp: {{(item.timeStamp)}} </label>
+        </div>
       </div>
     </cdk-virtual-scroll-viewport>
   </mat-list>
