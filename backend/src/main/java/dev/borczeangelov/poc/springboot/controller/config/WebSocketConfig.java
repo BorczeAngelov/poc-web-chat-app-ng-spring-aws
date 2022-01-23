@@ -8,18 +8,25 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 
 @Configuration
 @EnableWebSocketMessageBroker
-public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
+public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {    
 
-    @Override
-    public void configureMessageBroker(MessageBrokerRegistry config) {
-        config.enableSimpleBroker("/api/ws");
-    }
-
+    // Endpoint for client registry
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry
-        .addEndpoint("/api/ws-stomp-endpoint")
-        .setAllowedOrigins("http://localhost:4200")
-        .withSockJS();
+        registry.addEndpoint("/socket-registry")
+                .setAllowedOrigins("http://localhost:4200")
+                .withSockJS();
+    }
+
+
+    // Endpoint for client topic subscription
+    @Override
+    public void configureMessageBroker(MessageBrokerRegistry config) {
+
+        // One channel:
+        config.enableSimpleBroker("/api/ws");
+
+        // Further channels:
+        // registry.enableSimpleBroker("/api/ws", "/another-channel", "...");
     }
 }

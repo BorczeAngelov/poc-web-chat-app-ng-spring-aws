@@ -12,7 +12,7 @@ export class WebChatService {
   constructor() {}
 
   connect(): void {
-    const socket = new SockJS('http://localhost:8080/api/ws-stomp-endpoint');
+    const socket = new SockJS('http://localhost:8080/socket-registry');
     this.stompClient = Stomp.over(socket);
 
     this.stompClient.connect({}, data => this.onConnected(data));
