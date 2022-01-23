@@ -24,7 +24,7 @@ export class WebChatService {
   }
 
   sendName(name: string) {
-    this.stompClient.send('/gkz/hello', {}, JSON.stringify({ 'name': name }));
+    this.stompClient.send('/hello', {}, JSON.stringify({ 'name': name }));
   }
 
   private onConnected(arg: IFrame) {
