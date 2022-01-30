@@ -1,4 +1,4 @@
-package dev.borczeangelov.poc.springboot.dal;
+package dev.borczeangelov.poc.springboot.dataAccess;
 
 import java.time.LocalTime;
 import java.util.Arrays;
@@ -6,7 +6,7 @@ import java.util.Arrays;
 import dev.borczeangelov.poc.springboot.dto.Message;
 import dev.borczeangelov.poc.springboot.dto.MessageBoard;
 
-public class InMemoryData {
+public class  InMemoryData {
 
     public static MessageBoard MessageBoard = InitialiseMessageBoard();
 

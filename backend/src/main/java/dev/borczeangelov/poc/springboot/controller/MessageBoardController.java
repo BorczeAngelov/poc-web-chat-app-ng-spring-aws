@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.borczeangelov.poc.springboot.dal.InMemoryData;
+import dev.borczeangelov.poc.springboot.dataAccess.InMemoryData;
 import dev.borczeangelov.poc.springboot.dto.Message;
 import dev.borczeangelov.poc.springboot.dto.MessageBoard;
 

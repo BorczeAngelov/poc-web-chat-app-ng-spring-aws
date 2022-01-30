@@ -4,7 +4,7 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
-import dev.borczeangelov.poc.springboot.dal.InMemoryData;
+import dev.borczeangelov.poc.springboot.dataAccess.InMemoryData;
 import dev.borczeangelov.poc.springboot.dto.Message;
 import dev.borczeangelov.poc.springboot.dto.MessageBoard;
 
