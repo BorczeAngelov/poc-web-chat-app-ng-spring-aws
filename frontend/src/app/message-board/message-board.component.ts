@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Message } from './Message';
+import { Message } from '../data/Message';
 import { MessageBoardService } from './message-board.service';
 
 @Component({

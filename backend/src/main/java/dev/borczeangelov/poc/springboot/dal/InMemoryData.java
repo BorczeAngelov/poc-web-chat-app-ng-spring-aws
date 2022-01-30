@@ -12,14 +12,12 @@ public class InMemoryData {
 
     private static MessageBoard InitialiseMessageBoard() {
         LocalTime localTime = LocalTime.now();
-        String title = "Server generated message board." +
-                " LocalTime = " + localTime;
-
+        
         Message[] messages = new Message[] {
-                new Message(0, "Cloud Server", "Hi, this is the first message from the cloud", localTime)
+                new Message(0, "Cloud Server", "Hi, this is the first message from backend server", localTime)
         };
 
-        return new MessageBoard(title, messages);
+        return new MessageBoard(messages);
     }
 
     public static MessageBoard AddMessage(Message newMessage) {

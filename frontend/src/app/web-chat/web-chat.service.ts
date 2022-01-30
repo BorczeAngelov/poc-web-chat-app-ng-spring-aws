@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CompatClient, IMessage, Stomp } from '@stomp/stompjs';
 import { HttpService } from '../http.service';
-import { Message } from '../message-board/Message';
-import { MessageBoard } from '../message-board/messageBoard';
+import { Message } from '../data/Message';
+import { MessageBoard } from '../data/MessageBoard';
 
 @Injectable({
   providedIn: 'root'
@@ -37,8 +37,5 @@ export class WebChatService {
     this.messageBoard = newMessageBoard;
 
     console.log(this.messageBoard);
-
-    // var newData = JSON.parse(data.body).greeting; //Use static types
-    // this.greetings = [...this.greetings, newData];
   }
 }

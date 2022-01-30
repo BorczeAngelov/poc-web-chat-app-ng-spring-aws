@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { HttpService } from '../http.service';
-import { Message } from './Message';
-import { MessageBoard } from './messageBoard';
+import { Message } from '../data/Message';
+import { MessageBoard } from '../data/MessageBoard';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class MessageBoardService {
 
   messageBoard$: Observable<MessageBoard>;
 
-  constructor(private http: HttpClient, private httpService: HttpService) {}
+  constructor(private http: HttpClient, private httpService: HttpService) { }
 
   loadMessageBoard(): void {
     this.messageBoard$ = this.http.get<MessageBoard>(this.httpService.serverUrl + '/api/messageboard/getmessageboard');
@@ -25,7 +25,7 @@ export class MessageBoardService {
         tap(_ => this.loadMessageBoard())
       ).subscribe();
   }
-  
+
   clearMessageBoard() {
     this.http.get<MessageBoard>(this.httpService.serverUrl + '/api/messageboard/clearmessageboard')
       .pipe(
